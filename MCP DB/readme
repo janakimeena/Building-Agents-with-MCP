@@ -1,0 +1,11 @@
+pip install mcp-server-sqlite
+
+"sqlite": {
+    "command": "uv",
+    "args": [
+        "run",
+        "mcp-server-sqlite",
+        "--db-path",
+        "/media/janaki/VIT Chennai/MCP tutorials/MCP DB/chinook.db"
+    ]
+}
