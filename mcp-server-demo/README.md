@@ -1,15 +1,15 @@
-# Create new project
-uv init mcp-server-demo
-cd mcp-server-demo
-# Add MCP with CLI tools
-uv add "mcp[cli]"
+**Create new project** <br>
+uv init mcp-server-demo <br>
+cd mcp-server-demo <br><br>
+**Add MCP with CLI tools** <br>
+uv add "mcp[cli]" <br>
 
-uv run mcp install server.py
+uv run mcp install server.py <br>
 
-uv run mcp dev server_sticky.py
+uv run mcp dev server_sticky.py <br>
 
-**Add in Claude Desktop Config**
-"ai-sticky-notes": {
-      "command": "uv",
-      "args": ["run", "/media/janaki/VIT Chennai/Building Agents with MCP/mcp-server-demo/server_sticky.py"]
-    }
+**Add in Claude Desktop Config**<br>
+"ai-sticky-notes": {<br>
+      "command": "uv",<br>
+      "args": ["run", "/media/janaki/VIT Chennai/Building Agents with MCP/mcp-server-demo/server_sticky.py"]<br>
+    }<br>
