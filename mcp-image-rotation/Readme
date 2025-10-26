@@ -1,0 +1,19 @@
+# Create a new directory for your MCP server
+mkdir mcp-image-rotation
+cd mcp-image-rotation
+
+
+
+# Or for Python
+python -m venv venv
+
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+pip install mcp opencv-python numpy
+
+
+pip install flask flask-cors
+
+pip install fastapi uvicorn python-multipart
+
+
