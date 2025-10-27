@@ -9,19 +9,21 @@ mcp = FastMCP("weather")
 NWS_API_BASE = "https://api.weather.gov"
 USER_AGENT = "weather-app/1.0"
 
+
 async def make_nws_request(url: str) -> dict[str, Any] | None:
-    """Make a request to the NWS API with proper error handling."""
+    """Make a request to the NWS API with proper error handling. National Weather Service API requires a custom User-Agent header identifying your app or email — otherwise it may reject the request.
+    tells the server to return GeoJSON-formatted weather data."""
     headers = {
         "User-Agent": USER_AGENT,
         "Accept": "application/geo+json"
     }
     async with httpx.AsyncClient() as client:
         try:
-            response = await client.get(url, headers=headers, timeout=30.0)
-            response.raise_for_status()
+            response = await client.get(url, headers=headers, timeout=30.0) # Sends a GET request to the provided url with a 30-second timeout
+            response.raise_for_status() #Raises an exception if the response status code is not 2xx (e.g. 404, 500, etc.)
             return response.json()
         except Exception:
-            return None
+            return None #Catches any network, timeout, or HTTP error and returns None instead of crashing
 
 def format_alert(feature: dict) -> str:
     """Format an alert feature into a readable string."""

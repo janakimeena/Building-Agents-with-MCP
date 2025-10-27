@@ -73,7 +73,32 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             angle = arguments["angle"]
             scale = arguments.get("scale", 1.0)
             
-            rotated_image = rotate_image(image_data, angle, scale)
+            rotated_image = rotatedef rotate_image(image_data, angle, scale=1.0):
+    """Rotate an image using OpenCV"""
+    try:
+        # Decode base64 image
+        nparr = np.frombuffer(base64.b64decode(image_data), np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        
+        if img is None:
+            raise ValueError("Could not decode image")
+        
+        # Get image dimensions
+        height, width = img.shape[:2]
+        center = (width // 2, height // 2)
+        
+        # Get rotation matrix
+        rotation_matrix = cv2.getRotationMatrix2D(center, angle, scale)
+        
+        # Perform rotation
+        rotated = cv2.warpAffine(img, rotation_matrix, (width, height))
+        
+        # Encode back to base64
+        _, buffer = cv2.imencode('.png', rotated)
+        return base64.b64encode(buffer).decode('utf-8')
+    except Exception as e:
+        raise ValueError(f"Rotation failed: {str(e)}")
+_image(image_data, angle, scale)
             
             return [
                 TextContent(
