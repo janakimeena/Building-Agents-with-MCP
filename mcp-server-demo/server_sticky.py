@@ -1,10 +1,10 @@
 import os
 import sys
-import signal
+#import signal
 from mcp.server.fastmcp import FastMCP
 
 # Handle SIGPIPE gracefully
-signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+#signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 
 mcp = FastMCP("AI Sticky Notes")
 
@@ -81,8 +81,8 @@ def handle_shutdown(signum, frame):
 
 if __name__ == "__main__":
     # Register signal handlers for graceful shutdown
-    signal.signal(signal.SIGTERM, handle_shutdown)
-    signal.signal(signal.SIGINT, handle_shutdown)
+    #signal.signal(signal.SIGTERM, handle_shutdown)
+    #signal.signal(signal.SIGINT, handle_shutdown)
     
     try:
         mcp.run()

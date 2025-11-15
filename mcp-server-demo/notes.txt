@@ -2,3 +2,5 @@ Create demo
 Create weather
 Take medicines before sleep
 Drink water every 20 mins
+Go to lunch
+Drink water after 30 minutes
